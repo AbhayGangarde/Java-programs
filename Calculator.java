@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 
-class Calculator1
+class Calculator
 {
     public static void main(String Arg[])
     {
@@ -9,13 +9,12 @@ class Calculator1
     }
 }
 
-class MarvellousCalculator extends WindowAdapter implements ActionListener
+class MarvellousCalculator extends WindowAdapter// implements ActionListener
 {
     public Frame fobj;
     public Button b1,b2,b3,b4;
     public TextField t1,t2;
     public Label lobj;
-    public Integer No1, No2;
 
     public MarvellousCalculator(int width, int height, String title)
     {
@@ -52,45 +51,11 @@ class MarvellousCalculator extends WindowAdapter implements ActionListener
         lobj.setBounds(150,25,200,100);    // X,Y,W,H
         fobj.add(lobj);
         
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        b4.addActionListener(this);
-
         fobj.setLayout(null);
         fobj.setVisible(true);
     }
-
-    public void windowClosing(WindowEvent obj)      // Event handler for frame
+    public void windowClosing(WindowEvent obj)
     {
         System.exit(0);
-    }
-    
-    public void actionPerformed(ActionEvent aobj)   // Event handler for buttons
-    {
-        try
-        {
-            No1 = Integer.parseInt(t1.getText());
-            No2 = Integer.parseInt(t2.getText());
-
-            if(aobj.getSource() == b1)  // Add
-            {
-                lobj.setText("Addition is : "+(No1+No2));
-            }
-            else if(aobj.getSource() == b2)  // Sub
-            {
-                lobj.setText("Substraction is : "+(No1-No2));
-            } 
-            else if(aobj.getSource() == b3)  // Mult
-            {
-                lobj.setText("Multiplication is : "+(No1*No2));
-            } 
-            else if(aobj.getSource() == b4)  // Div
-            {
-                lobj.setText("Division is : "+(No1/No2));
-            } 
-        }
-        catch(Exception eobj)
-        {}
     }
 }
